@@ -1,0 +1,143 @@
+"use client";
+
+import { authClient } from "@/lib/auth-client";
+import {
+  Alert,
+  Button,
+  Card,
+  FieldError,
+  Form,
+  Input,
+  Label,
+  Separator,
+  TextField,
+} from "@heroui/react";
+import Link from "next/link";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import { BiLogIn } from "react-icons/bi";
+import { FaBuilding } from "react-icons/fa6";
+
+const LoginPage = () => {
+  const [message, setMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    setMessage("");
+    setIsLoading(true);
+
+    const formData = new FormData(e.currentTarget);
+
+    const user = Object.fromEntries(formData.entries());
+
+    const { data, error } = await authClient.signIn.email({
+      email: user.email as string,
+      password: user.password as string,
+    });
+
+    setIsLoading(false);
+
+    if (data) {
+      window.location.href = "/";
+      toast.success("Welcome Back!");
+    }
+
+    if (error) {
+      setMessage(error.message as string);
+      toast.error(error.message as string);
+    }
+  };
+
+  return (
+    <section className="flex min-h-screen items-center justify-center bg-[#F8F8F8] px-4 py-10">
+      <Card className="w-full max-w-md rounded-3xl border border-gray-200 bg-white p-8 shadow-xl">
+        <div className="mb-8 flex flex-col items-center">
+          <Link href="/" className="mb-5 flex items-center gap-3">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#FF5A3C] text-white">
+              <FaBuilding size={20} />
+            </div>
+
+            <h1 className="text-2xl font-bold text-[#2C2C2C]">DwellSpot</h1>
+          </Link>
+
+          <h2 className="text-3xl font-bold text-[#2C2C2C]">Welcome Back</h2>
+
+          <p className="mt-2 text-center text-sm text-gray-500">
+            Sign in to access your account and manage your apartment listings.
+          </p>
+        </div>
+
+        <Form onSubmit={handleSubmit} className="flex w-full flex-col gap-5">
+          <TextField
+            isRequired
+            name="email"
+            type="email"
+            className="w-full"
+            validate={(value) => {
+              if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
+                return "Please enter a valid email address.";
+              }
+
+              return null;
+            }}
+          >
+            <Label>Email Address</Label>
+
+            <Input
+              placeholder="john@example.com"
+              className="w-full rounded-2xl border border-gray-300 px-4 py-2 text-sm focus:border-[#FF5A3C] focus:ring focus:ring-[#FF5A3C]/50"
+            />
+
+            <FieldError />
+          </TextField>
+
+          <TextField
+            isRequired
+            name="password"
+            type="password"
+            className="w-full"
+          >
+            <Label>Password</Label>
+
+            <Input
+              placeholder="••••••••"
+              className="w-full rounded-2xl border border-gray-300 px-4 py-2 text-sm focus:border-[#FF5A3C] focus:ring focus:ring-[#FF5A3C]/50"
+            />
+
+            <FieldError />
+          </TextField>
+
+          {message && <Alert color="danger">{message}</Alert>}
+
+          <Button
+            type="submit"
+            isDisabled={isLoading}
+            className="mt-2 h-12 w-full bg-[#FF5A3C] font-semibold text-white hover:bg-[#ef4b2d]"
+          >
+            <BiLogIn size={20} />
+
+            {isLoading ? "Signing In..." : "Sign In"}
+          </Button>
+        </Form>
+
+        <div className="my-6">
+          <Separator />
+        </div>
+
+        <p className="text-center text-sm text-gray-500">
+          {"Don't"} have an account?{" "}
+          <Link
+            href="/register"
+            className="font-semibold text-[#FF5A3C] hover:underline"
+          >
+            Create an account
+          </Link>
+        </p>
+      </Card>
+    </section>
+  );
+};
+
+export default LoginPage;
