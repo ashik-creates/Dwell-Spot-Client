@@ -40,3 +40,42 @@ export const getApartment = async (id: string): Promise<Apartment> => {
 
   return res.json();
 };
+
+
+
+
+export const getFeaturedApartments = async (): Promise<Apartment[]> => {
+  const res = await fetch(
+    `${API}/api/featured-apartments`,
+    {
+      next: {
+        revalidate: 60,
+      },
+    }
+  );
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch featured apartments");
+  }
+
+  return res.json();
+};
+
+interface Statistics {
+  totalApartments: number;
+  availableApartments: number;
+  averagePrice: number;
+  totalLocations: number;
+}
+
+export const getStatistics = async (): Promise<Statistics> => {
+  const res = await fetch(`${API}/api/statistics`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch statistics");
+  }
+
+  return res.json();
+};
