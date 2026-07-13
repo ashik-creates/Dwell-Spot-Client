@@ -79,3 +79,22 @@ export const getStatistics = async (): Promise<Statistics> => {
 
   return res.json();
 };
+
+export const getManageApartments = async (): Promise<Apartment[]> => {
+  const res = await fetch(
+    `${API}/api/admin/apartments`,
+    {
+      next: {
+        revalidate: 0,
+      },
+    }
+  );
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch manage apartments");
+  }
+
+  const data = await res.json();
+
+  return data.apartments;
+};

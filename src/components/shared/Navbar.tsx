@@ -96,7 +96,7 @@ const Navbar = () => {
   };
 
   const links = user
-    ? [...NAV_LINKS, { name: "Add Apartment", href: "/add-apartment" }]
+    ? [...NAV_LINKS, { name: "Add Apartment", href: "/add-apartment" }, { name: "Manage Apartments", href: "/manage-apartment" }]
     : NAV_LINKS;
 
   return (
