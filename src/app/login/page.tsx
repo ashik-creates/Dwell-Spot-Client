@@ -17,6 +17,8 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { BiLogIn } from "react-icons/bi";
 import { FaBuilding } from "react-icons/fa6";
+import { FcGoogle } from "react-icons/fc";
+import { HiOutlineUserCircle } from "react-icons/hi2";
 
 const LoginPage = () => {
   const [message, setMessage] = useState("");
@@ -42,6 +44,34 @@ const LoginPage = () => {
     if (data) {
       window.location.href = "/";
       toast.success("Welcome Back!");
+    }
+
+    if (error) {
+      setMessage(error.message as string);
+      toast.error(error.message as string);
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    });
+  };
+
+  const handleDemoLogin = async () => {
+    setMessage("");
+    setIsLoading(true);
+
+    const { data, error } = await authClient.signIn.email({
+      email: "demo@dwellspot.com",
+      password: "Demo12345",
+    });
+
+    setIsLoading(false);
+
+    if (data) {
+      toast.success("Logged in as Demo User");
+      window.location.href = "/";
     }
 
     if (error) {
@@ -124,6 +154,27 @@ const LoginPage = () => {
 
         <div className="my-6">
           <Separator />
+        </div>
+
+        <div className="space-y-3">
+          <Button
+            variant="outline"
+            onPress={handleGoogleLogin}
+            className="h-12 w-full border-gray-300 bg-white font-semibold hover:bg-gray-50"
+          >
+            <FcGoogle size={22} />
+            Continue with Google
+          </Button>
+
+          <Button
+            variant="outline"
+            onPress={handleDemoLogin}
+            isDisabled={isLoading}
+            className="h-12 w-full border-[#FF5A3C] font-semibold text-[#FF5A3C] hover:bg-[#FFF3F0]"
+          >
+            <HiOutlineUserCircle size={22} />
+            Demo Login
+          </Button>
         </div>
 
         <p className="text-center text-sm text-gray-500">

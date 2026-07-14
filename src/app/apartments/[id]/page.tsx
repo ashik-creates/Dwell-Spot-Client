@@ -63,15 +63,12 @@ const ApartmentDetailsPage = async ({ params }: Props) => {
 
           <div className="mt-4 flex items-center gap-2 text-gray-500">
             <FaMapMarkerAlt className="text-[#FF5A3C]" />
-
             {apartment.location}
           </div>
 
           <div className="mt-6 flex items-center gap-2">
             <FaStar className="text-yellow-500" />
-
             <span className="font-semibold">{apartment.rating}</span>
-
             <span className="text-gray-500">(128 Reviews)</span>
           </div>
 
@@ -83,31 +80,25 @@ const ApartmentDetailsPage = async ({ params }: Props) => {
           <div className="mt-10 grid grid-cols-3 gap-4 rounded-3xl bg-[#FFF6F4] p-6">
             <div className="text-center">
               <FaBed className="mx-auto text-2xl text-[#FF5A3C]" />
-
               <p className="mt-2 text-2xl font-bold">
                 {apartment.bedrooms}
               </p>
-
               <p className="text-sm text-gray-500">Bedrooms</p>
             </div>
 
             <div className="text-center">
               <FaBath className="mx-auto text-2xl text-[#FF5A3C]" />
-
               <p className="mt-2 text-2xl font-bold">
                 {apartment.bathrooms}
               </p>
-
               <p className="text-sm text-gray-500">Bathrooms</p>
             </div>
 
             <div className="text-center">
               <FaRulerCombined className="mx-auto text-2xl text-[#FF5A3C]" />
-
               <p className="mt-2 text-2xl font-bold">
                 {apartment.size}
               </p>
-
               <p className="text-sm text-gray-500">sq ft</p>
             </div>
           </div>
@@ -117,10 +108,35 @@ const ApartmentDetailsPage = async ({ params }: Props) => {
       <div className="mt-20 grid gap-12 lg:grid-cols-[2fr_1fr]">
         <div className="space-y-12">
           <section>
+            <h2 className="mb-6 text-3xl font-bold text-[#2C2C2C]">
+              Overview
+            </h2>
+            <div className="grid grid-cols-2 gap-6 rounded-3xl border p-8 md:grid-cols-4">
+              <div>
+                <p className="text-sm text-gray-500">Property ID</p>
+                <p className="mt-1 font-semibold text-[#2C2C2C]">
+                  #PROP-{id.substring(0, 6).toUpperCase()}
+                </p>
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">Home Type</p>
+                <p className="mt-1 font-semibold text-[#2C2C2C]">{apartment.type}</p>
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">Year Built</p>
+                <p className="mt-1 font-semibold text-[#2C2C2C]">2022</p>
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">Contract</p>
+                <p className="mt-1 font-semibold text-[#2C2C2C]">Rent</p>
+              </div>
+            </div>
+          </section>
+
+          <section>
             <h2 className="mb-6 text-3xl font-bold">
               Description
             </h2>
-
             <p className="leading-8 text-gray-600">
               {apartment.description}
             </p>
@@ -236,13 +252,11 @@ const ApartmentDetailsPage = async ({ params }: Props) => {
             <div className="mt-8 space-y-4">
               <div className="flex items-center gap-3">
                 <FaPhone className="text-[#FF5A3C]" />
-
                 +1 234 567 890
               </div>
 
               <div className="flex items-center gap-3">
                 <FaEnvelope className="text-[#FF5A3C]" />
-
                 owner@email.com
               </div>
             </div>

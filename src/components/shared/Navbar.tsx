@@ -146,16 +146,7 @@ const Navbar = () => {
                 </div>
 
                 <Dropdown.Menu>
-                  <Dropdown.Item id="profile">
-                    <Link
-                      href="/dashboard"
-                      className="flex items-center gap-3 text-[#2C2C2C]"
-                    >
-                      <CgProfile size={18} />
-                      <Label>Dashboard</Label>
-                    </Link>
-                  </Dropdown.Item>
-
+                  
                   <Dropdown.Item
                     id="logout"
                     variant="danger"
@@ -224,13 +215,6 @@ const Navbar = () => {
                 </div>
 
                 <div className="flex flex-col gap-3">
-                  <Link
-                    href="/dashboard"
-                    onClick={closeMenu}
-                    className="rounded-lg border border-[#FF5A3C] py-3 text-center font-medium text-[#FF5A3C]"
-                  >
-                    Dashboard
-                  </Link>
                   <button
                     onClick={handleLogout}
                     className="rounded-lg bg-[#FF5A3C] py-3 font-medium text-white"
