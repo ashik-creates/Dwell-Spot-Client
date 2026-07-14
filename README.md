@@ -1,36 +1,171 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏠 DwellSpot
 
-## Getting Started
+DwellSpot is a modern apartment rental platform that helps users discover, explore, and manage apartment listings with ease. The application provides a clean user experience with secure authentication, apartment management, advanced search, filtering, and responsive design.
 
-First, run the development server:
+🔗 **Live Site:** https://dwell-spot-client.vercel.app
+
+🔗 **Server Repository:** https://github.com/ashik-creates/Dwell-Spot-Server
+
+---
+
+## ✨ Features
+
+- 🔐 Secure authentication with Better Auth
+- 🔑 Google Sign-In and Demo Login
+- 🏠 Browse apartments with search, filtering, sorting, and pagination
+- ⭐ Featured apartments section
+- 📊 Interactive statistics dashboard using Recharts
+- ➕ Add new apartment listings
+- 🗑️ Manage apartments with delete functionality
+- 📱 Fully responsive design for mobile, tablet, and desktop
+- 🚀 Protected routes for apartment management
+- ⚡ Loading skeletons, custom error page, and 404 page
+
+---
+
+## 📄 Pages
+
+- Home
+- Apartments
+- Apartment Details
+- Add Apartment
+- Manage Apartments
+- About
+- Blog
+- Login
+- Register
+- Error Page
+- 404 Page
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS
+- HeroUI
+- Recharts
+- React Icons
+- React Hot Toast
+- Better Auth
+
+### Backend
+
+- Node.js
+- Express.js
+- TypeScript
+- MongoDB
+- JOSE (JWT Verification)
+
+---
+
+
+## 🚀 Installation
+
+### Clone the repositories
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/your-username/dwellspot-client.git
+
+git clone https://github.com/your-username/dwellspot-server.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Client
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+cd dwellspot-client
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+npm install
 
-## Learn More
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Server
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+cd dwellspot-server
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+npm install
 
-## Deploy on Vercel
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔑 Environment Variables
+
+### Client (.env.local)
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:5000
+BETTER_AUTH_URL=http://localhost:3000
+BETTER_AUTH_SECRET=your_secret
+GOOGLE_CLIENT_ID=your_id
+GOOGLE_CLIENT_SECRET=your_secret
+
+```
+
+### Server (.env)
+
+```env
+PORT=5000
+
+MONGODB_URI=your_mongodb_uri
+
+CLIENT_URL=http://localhost:3000
+```
+
+---
+
+## 📦 Main Packages
+
+### Client
+
+- next
+- react
+- typescript
+- tailwindcss
+- @heroui/react
+- better-auth
+- react-hot-toast
+- recharts
+- react-icons
+
+### Server
+
+- express
+- mongodb
+- cors
+- dotenv
+- jose
+- typescript
+
+---
+
+## 🔒 Authentication
+
+- Email & Password Login
+- Google Login
+- Demo Login
+- Protected Routes
+- JWT Verification using Better Auth JWKS
+
+
+
+## 👨‍💻 Developer
+
+**Ashikur Rahman**
+
+GitHub: https://github.com/ashik-creates
+
+LinkedIn: https://linkedin.com/in/ashik-creates
+
+---
+
+## 📜 License
+
+This project is developed for educational purposes.
