@@ -6,8 +6,7 @@ import { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 import { FaBuilding } from "react-icons/fa6";
-import { Dropdown, Avatar, Label } from "@heroui/react";
-import { CgProfile } from "react-icons/cg";
+import { Dropdown, Avatar, Label, Button } from "@heroui/react";
 import { BiLogOut } from "react-icons/bi";
 import toast from "react-hot-toast";
 
@@ -71,7 +70,7 @@ function UserInfo({ user }: { user: SessionUser }) {
   return (
     <div className="leading-tight">
       <h4 className="text-sm font-semibold text-[#2C2C2C]">{user.name}</h4>
-      <p className="truncate text-xs text-gray-500">{user.email}</p>
+      <p className="truncate  text-xs text-gray-500">{user.email}</p>
     </div>
   );
 }
@@ -96,7 +95,11 @@ const Navbar = () => {
   };
 
   const links = user
-    ? [...NAV_LINKS, { name: "Add Apartment", href: "/add-apartment" }, { name: "Manage Apartments", href: "/manage-apartment" }]
+    ? [
+        ...NAV_LINKS,
+        { name: "Add Apartment", href: "/add-apartment" },
+        { name: "Manage Apartments", href: "/manage-apartment" },
+      ]
     : NAV_LINKS;
 
   return (
@@ -115,7 +118,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-8 xl:flex">
           {links.map((link) => (
             <NavLink
               key={link.href}
@@ -127,39 +130,47 @@ const Navbar = () => {
         </nav>
 
         {/* Desktop auth area */}
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center gap-3 xl:flex">
           {isPending ? null : user ? (
-            <Dropdown>
-              <Dropdown.Trigger className="flex items-center gap-3 rounded-xl border border-divider px-3 py-2 text-left transition hover:bg-default-100">
-                <UserAvatar user={user} size="sm" />
-                <span className="max-w-32 truncate text-sm font-medium text-[#2C2C2C]">
-                  {user.name}
-                </span>
-              </Dropdown.Trigger>
+            <>
+              <Dropdown>
+                <Dropdown.Trigger className="flex items-center gap-3 rounded-xl border border-divider px-3 py-2 text-left transition hover:bg-default-100">
+                  <UserAvatar user={user} size="sm" />
+                  <span className="max-w-32  truncate text-sm font-medium text-[#2C2C2C]">
+                    {user.name}
+                  </span>
+                </Dropdown.Trigger>
 
-              <Dropdown.Popover className="mr-2 w-full max-w-72 rounded-xl border border-divider bg-content1 shadow-xl">
-                <div className="border-b border-divider px-4 py-4">
-                  <div className="flex items-center gap-3">
-                    <UserAvatar user={user} />
-                    <UserInfo user={user} />
-                  </div>
-                </div>
-
-                <Dropdown.Menu>
-                  
-                  <Dropdown.Item
-                    id="logout"
-                    variant="danger"
-                    onClick={handleLogout}
-                  >
-                    <div className="flex items-center gap-3 text-red-600">
-                      <BiLogOut size={18} />
-                      <Label>Logout</Label>
+                <Dropdown.Popover className="mr-2 w-full max-w-72 rounded-xl border border-divider bg-content1 shadow-xl">
+                  <div className="border-b border-divider px-4 py-4">
+                    <div className="flex items-center gap-3">
+                      <UserAvatar user={user} />
+                      <UserInfo user={user} />
                     </div>
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown.Popover>
-            </Dropdown>
+                  </div>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item
+                      id="logout"
+                      variant="danger"
+                      onClick={handleLogout}
+                    >
+                      <div className="flex items-center gap-3 text-red-600">
+                        <BiLogOut size={18} />
+                        <Label>Logout</Label>
+                      </div>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown.Popover>
+              </Dropdown>
+              <Button
+               variant="outline"
+                onClick={handleLogout}
+                className="rounded-lg border border-[#FF5A3C] px-5 py-5 font-medium text-[#FF5A3C] transition hover:bg-[#FF5A3C] hover:text-white"
+              >
+                LogOut
+              </Button>
+            </>
           ) : (
             <>
               <Link
@@ -180,7 +191,7 @@ const Navbar = () => {
 
         <button
           onClick={() => setOpen(!open)}
-          className="text-[#2C2C2C] md:hidden"
+          className="text-[#2C2C2C] xl:hidden"
           aria-label="Toggle menu"
         >
           {open ? <HiX size={28} /> : <HiMenuAlt3 size={28} />}
@@ -188,7 +199,7 @@ const Navbar = () => {
       </section>
 
       <div
-        className={`overflow-hidden transition-all duration-300 md:hidden ${
+        className={`overflow-hidden transition-all duration-300 xl:hidden ${
           open ? "max-h-[600px] border-t border-gray-200" : "max-h-0"
         }`}
       >
