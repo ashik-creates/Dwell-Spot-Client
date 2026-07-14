@@ -82,7 +82,7 @@ export const getStatistics = async (): Promise<Statistics> => {
 
 export const getManageApartments = async (): Promise<Apartment[]> => {
   const res = await fetch(
-    `${API}/api/admin/apartments`,
+    `${API}/api/all/apartments`,
     {
       next: {
         revalidate: 0,
