@@ -56,7 +56,7 @@ const Highlights = () => {
               className="rounded-[32px] object-cover shadow-2xl"
             />
 
-            <div className="absolute -bottom-8 -right-8 rounded-3xl bg-white p-6 shadow-xl">
+            <div className="absolute bottom-4 right-4 rounded-3xl bg-white p-6 shadow-xl lg:-bottom-8 lg:-right-8">
               <h3 className="text-4xl font-bold text-[#FF5A3C]">1200+</h3>
               <p className="mt-2 text-gray-500">
                 Apartments Available

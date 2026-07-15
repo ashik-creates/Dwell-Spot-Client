@@ -60,8 +60,8 @@ const AboutHero = () => {
           </div>
         </div>
 
-        <div className="relative">
-          <div className="absolute -left-6 -top-6 h-48 w-48 rounded-full bg-[#FF5A3C]/10 blur-3xl" />
+        <div className="relative overflow-hidden lg:overflow-visible">
+          <div className="absolute left-0 top-0 h-48 w-48 rounded-full bg-[#FF5A3C]/10 blur-3xl lg:-left-6 lg:-top-6" />
 
           <Image
             src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg"

@@ -9,8 +9,8 @@ const OurStory = () => {
   return (
     <section className="bg-white py-24">
       <div className="mx-auto grid max-w-7xl items-center gap-16 px-5 lg:grid-cols-2">
-        <div className="relative">
-          <div className="absolute -bottom-6 -right-6 h-44 w-44 rounded-full bg-[#FF5A3C]/10 blur-3xl" />
+        <div className="relative overflow-hidden lg:overflow-visible">
+          <div className="absolute right-0 bottom-0 h-44 w-44 rounded-full bg-[#FF5A3C]/10 blur-3xl lg:-bottom-6 lg:-right-6" />
 
           <Image
             src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg"
