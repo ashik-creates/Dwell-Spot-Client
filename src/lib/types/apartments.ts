@@ -10,7 +10,6 @@ export interface Apartment {
   size: number;
   type: string;
   status: string;
-  rating: number;
   owner: string;
   featured: boolean;
 }

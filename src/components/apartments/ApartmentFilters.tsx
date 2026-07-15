@@ -27,7 +27,7 @@ const ApartmentFilters = () => {
         placeholder="Search apartments..."
         defaultValue={searchParams.get("search") || ""}
         onChange={(e) => updateQuery("search", e.target.value)}
-        className="rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-[#FF5A3C]"
+        className="rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-[#FF5A3C]"
       />
 
       <input
@@ -41,7 +41,7 @@ const ApartmentFilters = () => {
       <select
         defaultValue={searchParams.get("price") || ""}
         onChange={(e) => updateQuery("price", e.target.value)}
-        className="rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-[#FF5A3C]"
+        className="rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-[#FF5A3C]"
       >
         <option value="">All Prices</option>
         <option value="0-1000">Under $1000</option>
@@ -53,12 +53,11 @@ const ApartmentFilters = () => {
       <select
         defaultValue={searchParams.get("sort") || "newest"}
         onChange={(e) => updateQuery("sort", e.target.value)}
-        className="rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-[#FF5A3C]"
+        className="rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-[#FF5A3C]"
       >
         <option value="newest">Newest</option>
         <option value="price_asc">Price: Low → High</option>
         <option value="price_desc">Price: High → Low</option>
-        <option value="rating">Highest Rating</option>
       </select>
     </div>
   );

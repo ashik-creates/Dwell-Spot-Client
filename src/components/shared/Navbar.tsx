@@ -87,8 +87,7 @@ const Navbar = () => {
   const user = session?.user as SessionUser | undefined;
   const router = useRouter();
 
-  const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href);
+  const isActive = (href: string) => pathname === href;
 
   const closeMenu = () => setOpen(false);
 

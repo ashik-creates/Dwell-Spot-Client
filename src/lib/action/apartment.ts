@@ -5,7 +5,7 @@ import { Apartment } from "../types/apartments";
 const API = process.env.NEXT_PUBLIC_API_URL;
 
 export const addApartment = async (
-  apartment: Omit<Apartment, "_id" | "rating" | "createdAt">,
+  apartment: Omit<Apartment, "_id" | "createdAt">,
 ) => {
   const token = await getToken();
 
