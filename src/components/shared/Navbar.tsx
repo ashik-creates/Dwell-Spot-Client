@@ -69,8 +69,13 @@ function UserAvatar({ user, size }: { user: SessionUser; size?: "sm" }) {
 function UserInfo({ user }: { user: SessionUser }) {
   return (
     <div className="leading-tight">
-      <h4 className="text-sm font-semibold text-[#2C2C2C]">{user.name}</h4>
-      <p className="truncate  text-xs text-gray-500">{user.email}</p>
+      <h4 className="text-sm font-semibold text-[#2C2C2C]">
+        {user.name}
+      </h4>
+
+      <p className="max-w-[180px] break-all text-xs text-gray-500">
+        {user.email}
+      </p>
     </div>
   );
 }

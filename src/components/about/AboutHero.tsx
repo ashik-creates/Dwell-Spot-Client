@@ -29,10 +29,10 @@ const AboutHero = () => {
             </Link>
 
             <Link
-              href="/contact"
+              href="/blog"
               className="rounded-xl border border-[#FF5A3C] px-8 py-4 font-semibold text-[#FF5A3C] transition hover:bg-[#FF5A3C] hover:text-white"
             >
-              Contact Us
+              Learn More
             </Link>
           </div>
 
